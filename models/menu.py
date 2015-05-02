@@ -5,8 +5,8 @@
 ## Customize your APP title, subtitle and menus here
 #########################################################################
 
-response.logo = A(B('web',SPAN(2),'py'),XML('&trade;&nbsp;'),
-                  _class="brand",_href="http://www.web2py.com/")
+response.logo = A(B('IT',SPAN(2),'py'),XML('&trade;&nbsp;'),
+                  _class="navbar-brand",_href="http://www.google.com")
 response.title = request.application.replace('_',' ').title()
 response.subtitle = ''
 
@@ -24,7 +24,7 @@ response.google_analytics_id = None
 
 response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
-    (SPAN('Newspaper', _class='highlighted'), False, 'http://google.com', [
+    (SPAN('Newspaper', _class='highlighted'), False, URL('default', 'newspaper'), [
     ('New Newspaper Subscription', False, URL('default', 'newspaper'), []),
     ('View Existing Subscriptions', False, URL('default', 'show_newspaper_subscriptions'), [])
     ])
@@ -41,7 +41,11 @@ def _():
     app = request.application
     ctr = request.controller
     # useful links to internal and external resources
-    response.menu += [
+
+    f = 0
+
+    if f == 1:
+        response.menu += [
         (SPAN('web2py', _class='highlighted'), False, 'http://web2py.com', [  
         (T('My Sites'), False, URL('admin', 'default', 'site')),
         (T('This App'), False, URL('admin', 'default', 'design/%s' % app), [
@@ -138,6 +142,8 @@ def _():
                         ])
                 ]
          )]
+
+
 if DEVELOPMENT_MENU: _()
 
 if "auth" in locals(): auth.wikimenu() 

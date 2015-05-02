@@ -52,11 +52,13 @@ plugins = PluginManager()
 
 
 auth.settings.extra_fields['auth_user']= [
-  Field('Sex', requires=IS_IN_SET(['Male', 'Female', 'Other'])),
-  Field('phone_number', 'integer', IS_LENGTH(10)),
+  Field('roll_number'),
+  Field('sex', requires=IS_IN_SET(['Male', 'Female', 'Other'])),
+  Field('phone_number', requires=IS_MATCH('^[789]\d{9}$')),
   Field('name_of_father', 'string'),
   Field('home_address', 'text'),
-  Field('dob', 'date')]
+  Field('dob', 'date'),
+  Field('photo', 'upload')]
 
 auth.define_tables(username=False, signature=False)
 ## configure email

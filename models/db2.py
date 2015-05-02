@@ -2,3 +2,44 @@ db.define_table('newspaper',
                 Field('choice_of_newspaper', requires=IS_IN_SET(['The Times of India', 'The Hindu', 'The White Fur'])),
                 Field('subscription_type', requires=IS_IN_SET(['Yearly', 'Monthly'])),
                 Field('subscriber', 'reference auth_user', writable=False, readable=False))
+
+db.define_table('bboard',
+                Field('title', requires=IS_NOT_EMPTY()),
+                Field('body', 'text', requires=IS_NOT_EMPTY())
+                )
+
+db.define_table('room_year',
+                Field('batch', requires=IS_IN_SET(['UG2K15','UG2K14','UG2K13 and before','PG2K15','PG2K14 and before'])),
+                Field('student', 'reference auth_user',writable=False, readable=False))
+
+db.define_table('ug2k15',
+                Field('room_number', requires=IS_MATCH('^D([1-3][0-2][0-8])|^D([1-2][0-8])$|^D([1-9])$')),
+                Field('student', 'reference auth_user',writable=False, readable=False))
+
+db.define_table('fug2k15',
+                Field('room_number', requires=IS_MATCH('^D([1-3][0-2][0-8])|^D([1-2][0-8])$|^D([1-9])$')),
+                Field('student', 'reference auth_user',writable=False, readable=False))
+
+db.define_table('ug2k14',
+                Field('room_number', requires=IS_MATCH('^E([1-3][0-2][0-8])$|^E([1-2][0-8])$|^E([1-9])$')),
+                Field('student', 'reference auth_user',writable=False, readable=False))
+
+db.define_table('fug2k14',
+                Field('room_number', requires=IS_MATCH('^E([1-3][0-2][0-8])$|^E([1-2][0-8])$|^E([1-9])$')),
+                Field('student', 'reference auth_user',writable=False, readable=False))
+
+db.define_table('ug2k13',
+                Field('room_number', requires=IS_MATCH('^([1-2][0-9][0-9])$|^([1-9][1-9])$|^([1-9])$')),
+                Field('student', 'reference auth_user',writable=False, readable=False))
+
+db.define_table('fug2k13',
+                Field('room_number', requires=IS_MATCH('^([1-2][0-9][0-9])$|^([1-9][1-9])$|^([1-9])$')),
+                Field('student', 'reference auth_user',writable=False, readable=False))
+
+db.define_table('pg2k15',
+                Field('room_number', requires=IS_MATCH('^D([1-3][0-2][0-8])|^D([1-2][0-8])$|^D([1-9])$')),
+                Field('student', 'reference auth_user',writable=False, readable=False))
+
+db.define_table('pg2k14',
+                Field('room_number', requires=IS_MATCH('^E([1-3][0-2][0-8])$|^E([1-2][0-8])$|^E([1-9])$')),
+                Field('student', 'reference auth_user',writable=False, readable=False))

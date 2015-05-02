@@ -1,22 +1,27 @@
-{{extend 'layout.html'}}
+{{extend 'layout2.html'}}
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 </head>
 <body>
-	<table>
-		<tr>
-			<th>Name of Newspaper</th>
-			<th>Subscription Type</th>
-		</tr>
-		
-		{{for r in subs:}}
-		<tr>
-			<td>{{=r.choice_of_newspaper}}</td>
-			<td>{{=r.subscription_type}}</td>
-		</tr>
-		{{pass}}
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Unique ID</th>
+				<th>Name of Newspaper</th>
+				<th>Subscription Type</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{for r in subs:}}
+			<tr>
+				<td>{{=r.id}}</td>
+				<td>{{=r.choice_of_newspaper}}</td>
+				<td>{{=r.subscription_type}}</td>
+			</tr>
+			{{pass}}
+		</tbody>
 	</table>
 
 </body>
