@@ -52,7 +52,7 @@ plugins = PluginManager()
 
 
 auth.settings.extra_fields['auth_user']= [
-  Field('roll_number', requires=IS_MATCH('^20[01][09]\d{4}$', error_message='Invalid Roll number ')),
+  Field('roll_number', requires=IS_MATCH('^20[01]\d{5}$', error_message='Invalid Roll number ')),
   Field('sex', requires=IS_IN_SET(['Male', 'Female', 'Other'])),
   Field('mobile_number', requires=IS_MATCH('^[789]\d{9}$', error_message='Invalid Mobile number')),
   Field('name_of_parent', 'string'),
